@@ -8,6 +8,8 @@ Holly Helton October 2018
 #include "wrapper_glfw.h"
 #include <glm.hpp>
 
+using namespace glm;
+
 /* Initialise camera veriables with defaults */
 vec3 position = vec3(0, 0, 5);
 GLfloat horizontalAngle = 3.14f;
@@ -17,5 +19,14 @@ GLfloat initialFoV = 45.0f;
 GLfloat speed = 3.0f;
 GLfloat mouseSpeed = 0.005f;
 
-using namespace glm;
+/*
+Listens for mouse and keyboard input and calculates matrices from input
+*/
+void translateInputs() {
+
+
+	/* Get position of cursor */
+	GLdouble x, y;
+	glfwGetCursorPos(window, &x, &y);
+}
 

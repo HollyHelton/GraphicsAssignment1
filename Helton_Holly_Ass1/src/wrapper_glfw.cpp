@@ -63,7 +63,6 @@ GLWrapper::GLWrapper(int width, int height, const char *title) {
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, true);
 }
 
-
 /* Terminate GLFW on destruvtion of the wrapepr object */
 GLWrapper::~GLWrapper() {
 	glfwTerminate();
@@ -74,7 +73,6 @@ GLFWwindow* GLWrapper::getWindow()
 {
 	return window;
 }
-
 
 /*
  * Pront OpenGL Version
@@ -88,7 +86,6 @@ void GLWrapper::DisplayVersion()
 
 }
 
-
 /*
 GLFW_Main function normally starts the windows system, calls any init routines
 and then starts the event loop which runs until the program ends
@@ -98,6 +95,8 @@ int GLWrapper::eventLoop()
 	// Main loop
 	while (!glfwWindowShouldClose(window))
 	{
+		getDeltaTime();
+
 		// Call function to draw your graphics
 		renderer();
 
@@ -110,6 +109,17 @@ int GLWrapper::eventLoop()
 	return 0;
 }
 
+GLfloat getDeltaTime() {
+	/* Holds the time of the frame previous to the current.
+   Initialised with the first time the function is called. */
+	static GLdouble previousTime = glfwGetTime();
+
+	/* Calculate delta time, i.e. the time difference between frames. */
+	GLdouble currentTime = glfwGetTime();
+	GLfloat deltaTime = GLfloat(currentTime - previousTime);
+
+	return deltaTime;
+}
 
 /* Register an error callback function */
 void GLWrapper::setErrorCallback(void(*func)(int error, const char* description))
@@ -129,14 +139,12 @@ void GLWrapper::setReshapeCallback(void(*func)(GLFWwindow* window, int w, int h)
 	glfwSetFramebufferSizeCallback(window, reshape);
 }
 
-
 /* Register a callback to respond to keyboard events */
 void GLWrapper::setKeyCallback(void(*func)(GLFWwindow* window, int key, int scancode, int action, int mods))
 {
 	keyCallBack = func;
 	glfwSetKeyCallback(window, keyCallBack);
 }
-
 
 /* Build shaders from strings containing shader source code */
 GLuint GLWrapper::BuildShader(GLenum eShaderType, const string &shaderText)
