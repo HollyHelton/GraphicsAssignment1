@@ -24,7 +24,10 @@
     <ClCompile Include="src\wrapper_glfw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controls.cpp">
+    <ClCompile Include="src\obj\tetrahedron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -37,6 +40,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\wrapper_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\obj\tetrahedron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -55,7 +55,6 @@ Cube aCube;
 using namespace std;
 using namespace glm;
 
-
 /*
 This function is called before entering the main rendering loop.
 Use it for all your initialisation stuff
