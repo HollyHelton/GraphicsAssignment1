@@ -19,14 +19,5 @@ GLfloat initialFoV = 45.0f;
 GLfloat speed = 3.0f;
 GLfloat mouseSpeed = 0.005f;
 
-/*
-Listens for mouse and keyboard input and calculates matrices from input
-*/
-void translateInputs() {
 
-
-	/* Get position of cursor */
-	GLdouble x, y;
-	glfwGetCursorPos(window, &x, &y);
-}
 

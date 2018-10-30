@@ -97,6 +97,7 @@ int GLWrapper::eventLoop()
 	{
 		getDeltaTime();
 
+
 		// Call function to draw your graphics
 		renderer();
 
@@ -109,7 +110,7 @@ int GLWrapper::eventLoop()
 	return 0;
 }
 
-GLfloat getDeltaTime() {
+GLfloat GLWrapper::getDeltaTime() {
 	/* Holds the time of the frame previous to the current.
    Initialised with the first time the function is called. */
 	static GLdouble previousTime = glfwGetTime();
@@ -119,6 +120,13 @@ GLfloat getDeltaTime() {
 	GLfloat deltaTime = GLfloat(currentTime - previousTime);
 
 	return deltaTime;
+}
+
+/* Listens for mouse and keyboard input and calculates matrices from input. */
+void GLWrapper::translateInputs() {
+	/* Get position of cursor */
+	GLdouble x, y;
+	glfwGetCursorPos(window, &x, &y);
 }
 
 /* Register an error callback function */
