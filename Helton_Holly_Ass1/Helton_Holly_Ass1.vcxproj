@@ -18,6 +18,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\controls.cpp" />
+    <ClCompile Include="src\lab3start.cpp" />
+    <ClCompile Include="src\obj\cube.cpp" />
+    <ClCompile Include="src\wrapper_glfw.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\shaders\lab3start.frag" />
+    <None Include="src\shaders\lab3start.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\obj\cube.h" />
+    <ClInclude Include="src\wrapper_glfw.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2DB97E8A-E978-4A80-AB4B-EE4E72525183}</ProjectGuid>
@@ -76,7 +90,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glload\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\glload\lib;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2015</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;glload.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -94,10 +114,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glload\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\glload\lib;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2015</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;glload.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -114,8 +138,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
