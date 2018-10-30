@@ -96,7 +96,7 @@ int GLWrapper::eventLoop()
 	while (!glfwWindowShouldClose(window))
 	{
 		getDeltaTime();
-
+		getCameraAngleFromMouse();
 
 		// Call function to draw your graphics
 		renderer();
@@ -110,7 +110,8 @@ int GLWrapper::eventLoop()
 	return 0;
 }
 
-GLfloat GLWrapper::getDeltaTime() {
+GLfloat GLWrapper::getDeltaTime() 
+{
 	/* Holds the time of the frame previous to the current.
    Initialised with the first time the function is called. */
 	static GLdouble previousTime = glfwGetTime();
@@ -122,11 +123,18 @@ GLfloat GLWrapper::getDeltaTime() {
 	return deltaTime;
 }
 
-/* Listens for mouse and keyboard input and calculates matrices from input. */
-void GLWrapper::translateInputs() {
+/* Calculates camera angle from mouse position. */
+void GLWrapper::getCameraAngleFromMouse() 
+{
 	/* Get position of cursor */
 	GLdouble x, y;
 	glfwGetCursorPos(window, &x, &y);
+
+	GLint width, height;
+	glfwGetWindowSize(window, &width, &height);
+
+	// Set mouse position back to 0,0
+	glfwSetCursorPos(window, width / 2, height / 2);
 }
 
 /* Register an error callback function */
