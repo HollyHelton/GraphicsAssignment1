@@ -23,6 +23,8 @@ GLWrapper::GLWrapper(int width, int height, const char *title) {
 	this->title = title;
 	this->fps = 60;
 	this->running = true;
+	this->mouseHorizontal;
+	this->mouseVertical;
 
 	/* Initialise GLFW and exit if it fails */
 	if (!glfwInit()) 
@@ -110,15 +112,15 @@ int GLWrapper::eventLoop()
 	return 0;
 }
 
-GLfloat GLWrapper::getDeltaTime() 
+float GLWrapper::getDeltaTime() 
 {
 	/* Holds the time of the frame previous to the current.
    Initialised with the first time the function is called. */
-	static GLdouble previousTime = glfwGetTime();
+	static double previousTime = glfwGetTime();
 
 	/* Calculate delta time, i.e. the time difference between frames. */
-	GLdouble currentTime = glfwGetTime();
-	GLfloat deltaTime = GLfloat(currentTime - previousTime);
+	double currentTime = glfwGetTime();
+	float deltaTime = GLfloat(currentTime - previousTime);
 
 	return deltaTime;
 }
@@ -127,11 +129,14 @@ GLfloat GLWrapper::getDeltaTime()
 void GLWrapper::getCameraAngleFromMouse() 
 {
 	/* Get position of cursor */
-	GLdouble x, y;
+	double x, y;
 	glfwGetCursorPos(window, &x, &y);
 
-	GLint width, height;
+	int width, height;
 	glfwGetWindowSize(window, &width, &height);
+
+	mouseHorizontal += 0.005f * deltaTime * float(width / 2 - x);
+	mouseVertical += 0.005f * deltaTime * float(height / 2 - y);
 
 	// Set mouse position back to 0,0
 	glfwSetCursorPos(window, width / 2, height / 2);

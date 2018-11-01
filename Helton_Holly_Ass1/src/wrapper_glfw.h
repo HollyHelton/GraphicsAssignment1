@@ -26,6 +26,10 @@ private:
 	bool running;
 	GLFWwindow* window;
 
+	float deltaTime;
+	double mouseHorizontal;
+	double mouseVertical;
+
 public:
 	GLWrapper(int width, int height, const char *title);
 	~GLWrapper();
@@ -49,8 +53,8 @@ public:
 	std::string readFile(const char *filePath);
 
 	int eventLoop();
-	GLfloat getDeltaTime();
-	void translateInputs();
+	float getDeltaTime();
+	void getCameraAngleFromMouse();
 	GLFWwindow* getWindow();
 };
 

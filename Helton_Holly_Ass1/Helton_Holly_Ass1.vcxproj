@@ -30,6 +30,7 @@
     <None Include="src\shaders\lab3start.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\obj\cube.h" />
     <ClInclude Include="src\obj\tetrahedron.h" />
     <ClInclude Include="src\wrapper_glfw.h" />
